@@ -5,6 +5,7 @@
 - `telegram/index.html` — версия под Telegram Mini Apps.
 - `vk/index.html` — версия под VK Mini Apps.
 - `original/index.html` — исходник без обвязки.
+- `max/index.html` — версия под MAX Mini App.
 
 ## Что добавлено
 
@@ -32,3 +33,9 @@ Mini App должен лежать на HTTPS-домене. Сейчас это 
 3. Для VK: создать VK Mini App в кабинете VK и указать URL.
 
 Никакие публикации и внешние настройки не делались без подтверждения Анастасии.
+
+
+### MAX
+- MAX Bridge: `https://st.max.ru/js/max-web-app.js`
+- базовая адаптация под MAX Mini App
+- URL для подключения: `https://anastasya-teplie-ladochki.github.io/dashboard-vzrosleniya-miniapps/max/`

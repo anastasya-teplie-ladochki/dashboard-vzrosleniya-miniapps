@@ -132,7 +132,7 @@ function setScores(o){localStorage.setItem(LS_SCORES,JSON.stringify(o))}
 function getEntries(){return JSON.parse(localStorage.getItem(LS_ENTRIES)||'[]')}
 function setEntries(v){localStorage.setItem(LS_ENTRIES,JSON.stringify(v))}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function deleteEntry(idx){const arr=getEntries();const e=arr[idx];if(!e)return;if(!confirm('Удалить эту запись? Проценты по схеме будут откатаны на её сдвиг.'))return;arr.splice(idx,1);setEntries(arr);const d=Number(e.delta)||0;if(e.schema&&d){const scores=getScores();const base=SCHEMAS.find(s=>s.id===e.schema)?.base??0;scores[e.schema]=clamp(Math.round(((scores[e.schema]??base)-d)*10)/10);setScores(scores)}renderAll();activate('memo')}
+function deleteEntry(idx){const arr=getEntries();const e=arr[idx];if(!e)return;if(!confirm('Удалить эту запись? Проценты по схеме будут откатаны на её сдвиг.'))return;arr.splice(idx,1);setEntries(arr);const d=Number(e.delta)||0;if(e.schema&&d){const scores=getScores();const base=SCHEMAS.find(s=>s.id===e.schema)?.base??0;scores[e.schema]=clamp(Math.round(((scores[e.schema]??base)-d)*10)/10);setScores(scores)}renderAll();activate('memo');setTimeout(()=>alert('Запись удалена. Проценты обновлены.'),60)}
 function score(s){return Math.round(getScores()[s.id]??s.base)}
 function fillClass(v){return v>=65?'r':v>=50?'o':v>=30?'y':'g'}
 function activate(tab){$$('.panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===tab));$$('.tabBtn').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab)); $('.panel.active')?.scrollTo(0,0)}
